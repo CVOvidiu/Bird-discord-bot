@@ -45,5 +45,11 @@ client.on('ready', () => {
     console.log('Ready!')
 })
 
+// Database
+const mongoose = require('mongoose')
+if(!process.env.mongooseConnectionString) return
+    mongoose.connect(process.env.mongooseConnectionString)
+        .then(() => console.log('Connected to mongodb.'))
+
 // Login to Discord with client's token (token stored in Heroku's Config Vars)
 client.login(process.env.token)
