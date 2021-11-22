@@ -40,11 +40,6 @@ client.on('interactionCreate', async interaction => {
     }
 })
 
-// When bot is ready
-client.on('ready', () => {
-    console.log('Ready!')
-})
-
 // Database
 const mongoose = require('mongoose')
 if(!process.env.mongooseConnectionString) return
