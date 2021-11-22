@@ -1,0 +1,31 @@
+{
+  "name": "bird-bot",
+  "version": "1.0.0",
+  "description": "",
+  "main": "config.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CVOvidiu/Bird-discord-bot.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@discordjs/builders": "^0.6.0",
+    "@discordjs/rest": "^0.1.0-canary.0",
+    "discord-api-types": "^0.23.1",
+    "discord.js": "^13.3.1",
+    "humanize-duration": "^3.27.0",
+    "moment-timezone": "^0.5.33",
+    "mongoose": "^6.0.11"
+  },
+  "engines": {
+    "node": "16.9.1"
+  },
+  "bugs": {
+    "url": "https://github.com/CVOvidiu/Bird-discord-bot/issues"
+  },
+  "homepage": "https://github.com/CVOvidiu/Bird-discord-bot#readme"
+}
