@@ -19,15 +19,6 @@ module.exports = {
     name: 'guildMemberAdd',
     once: false,
     async execute(member) {
-        // Update global.invites after member joined and find the invite used and inviter
-        await member.guild.invites.fetch()
-            .then(async newInvites => {
-                oldInvites = global.invites.get(member.guild.id) // Get guild invites before member joined from global.invites
-                invite = newInvites.find(i => i.uses > oldInvites.get(i.code)) // Find the invite code that was used by member
-                inviter = member.client.users.cache.get(invite.inviter.id) // Find the inviter of the member
-                global.invites.set(member.guild.id, new Map(newInvites.map(inv => [inv.code, inv.uses]))) // Update global.invites
-            })
-        
         // Issue solved: Member was not previously removed from database because bot restarted / crashed
         await Invites.find({'invites':member.id}) // Find if member is already in database
             .then(async result => {
@@ -40,6 +31,15 @@ module.exports = {
                     else
                         await Invites.findOneAndUpdate({_id:inviter}, {$set:{'invites':inviteList}}) // Update the invite list of inviter
                 }
+            })
+
+        // Update global.invites after member joined and find the invite used and inviter
+        await member.guild.invites.fetch()
+            .then(async newInvites => {
+                oldInvites = global.invites.get(member.guild.id) // Get guild invites before member joined from global.invites
+                invite = newInvites.find(i => i.uses > oldInvites.get(i.code)) // Find the invite code that was used by member
+                inviter = member.client.users.cache.get(invite.inviter.id) // Find the inviter of the member
+                global.invites.set(member.guild.id, new Map(newInvites.map(inv => [inv.code, inv.uses]))) // Update global.invites
             })
 
         console.log(`--------- Debug: InviterID` + inviter.id)
