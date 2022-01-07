@@ -8,9 +8,9 @@ module.exports = {
     name: 'ready',
     once: true,
     async execute(client) {
-        client.user.setPresence({status: 'idle', activities:[{name: 'Test BOT', type:'LISTENING'}]})
+        client.user.setPresence({status: 'idle', activities:[{name: 'BornFromAshes BOT', type:'LISTENING'}]})
         await wait(1000)
-        console.log(`Dev online! Logged in as ${client.user.tag}`)
+        console.log(`Main online! Logged in as ${client.user.tag}`)
 
         client.guilds.cache.forEach(async guild => {
             const firstInvites = await guild.invites.fetch()
