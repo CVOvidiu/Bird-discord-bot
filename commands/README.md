@@ -1,0 +1,1 @@
+Need this directory in the future to store commands, atm just for bot to work.
