@@ -109,6 +109,11 @@ module.exports = {
         inviter
         ? response += `\n**A fost invitat de catre \`${inviter.username}\` care are in acest moment: \`${inviteListCount}\` invites.**`
         : response += `\n**Nu imi pot da seama de catre cine a fost invitat.**`
+        await member.guild.members.fetch()
+            .then(memList => {
+                tMem = memList.filter(m => !m.user.bot)
+            })
+        response += `\n***Acum suntem*** \`${tMem.size}\`***membrii pe server!***`
         const embed = new MessageEmbed()
             .setColor('#3596ff')
             .setDescription(response)

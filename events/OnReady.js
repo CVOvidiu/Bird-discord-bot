@@ -8,7 +8,7 @@ module.exports = {
     name: 'ready',
     once: true,
     async execute(client) {
-        client.user.setPresence({status: 'idle', activities:[{name: 'BornFromAshes BOT', type:'LISTENING'}]})
+        client.user.setPresence({status: 'idle', activities:[{name: 'BornFromAshes', type:'LISTENING'}]})
         await wait(1000)
         console.log(`Main online! Logged in as ${client.user.tag}`)
 

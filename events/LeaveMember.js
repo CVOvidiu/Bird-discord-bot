@@ -45,6 +45,11 @@ module.exports = {
                         await Invites.findOneAndUpdate({_id:inviterID}, {$set: {'invites':inviteList}})
                 }
             })
+        await member.guild.members.fetch()
+            .then(memList => {
+                tMem = memList.filter(m => !m.user.bot)
+            })
+        response += `\n***Acum suntem*** \`${tMem.size}\`***membrii pe server!***`
         const embed = new MessageEmbed()
             .setColor('#222222')
             .setDescription(response)
