@@ -2,8 +2,6 @@ module.exports = {
     name: 'ready',
     once: false,
     async execute(client) {
-        const guild = client.guilds.cache.get('569077625826443274')
-
         setInterval(() => {
             for(let[key, value] of global.joinraid_ls) {
                 value -= 1
