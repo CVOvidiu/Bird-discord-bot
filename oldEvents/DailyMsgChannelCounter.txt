@@ -1,0 +1,18 @@
+const User = require('../schemas/tagTime')
+
+module.exports = {
+    name: 'ready',
+    once: false,
+    async execute(client) {
+        setInterval(async () => {
+            const guild = client.guilds.cache.get('569077625826443274')
+            const channel = guild.channels.cache.get('909094047812026468')
+            const result = await User.find({"dailymsg":{$exists:true}})
+            var counter = 0
+            result.forEach((entry) => {
+                counter += entry.dailymsg
+            })
+            channel.edit({name: `•̥✉️𝘛-𝘥𝘢𝘺 𝘮𝘦𝘴𝘴𝘢𝘨𝘦𝘴 • ${counter}`})
+        }, 60000 * 30)
+    }
+}
